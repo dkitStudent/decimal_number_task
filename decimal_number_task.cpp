@@ -19,32 +19,32 @@ public:
     {
         integer_part_.resize(integer_size_);
         fractional_part_.resize(fractional_size_);
-        cout << this->to_string() << endl;
+        //cout << this->to_string() << endl;
     }
 
     void set_both_parts(unsigned char integer_part, unsigned char fractional_part)
     {
-        integer_part_.clear();
+        //integer_part_.clear();
         int digit = 0;
-        while (integer_part > 0)
+        for (size_t i = 0; i < integer_size_; i++)
         {
             digit = integer_part % 10;
             integer_part /= 10;
-            integer_part_.push_back(digit);
+            integer_part_[i] = digit;
         }
         //reverse(integer_part_.begin(), integer_part_.end());
 
-        fractional_part_.clear();
+        //fractional_part_.clear();
         digit = 0;
-        while (fractional_part > 0)
+        for (size_t i = 0; i < fractional_size_; i++)
         {
             digit = fractional_part % 10;
             fractional_part /= 10;
-            fractional_part_.push_back(digit);
+            fractional_part_[i] = digit;
         }
         reverse(fractional_part_.begin(), fractional_part_.end());
 
-        cout << this->to_string() << endl;
+        //cout << this->to_string() << endl;
     }
     
 
@@ -214,7 +214,8 @@ int main()
 {
     setlocale(LC_ALL, "Rus");
     DecimalNumber a(2, 2);
-    a.set_both_parts(12, 21);
+    a.set_both_parts(1, 2);
+    cout << a.to_string() << endl;
     //cout << a.to_string() << endl; // Output: 123.45
 
     //DecimalNumber b(2, 2);
